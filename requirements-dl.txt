@@ -1,0 +1,12 @@
+# Deep-learning stack. GPU strongly recommended for training/inference.
+# Install after requirements.txt:  pip install -r requirements-dl.txt
+torch
+transformers
+ultralytics
+sentence-transformers
+faiss-cpu
+onnx
+onnxruntime
+accelerate
+seqeval
+streamlit

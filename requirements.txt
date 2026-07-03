@@ -1,0 +1,14 @@
+# Core (CPU) — everything needed for preprocessing, OCR, metrics, API.
+numpy
+pandas
+scikit-learn
+opencv-python-headless
+pytesseract
+Pillow
+editdistance
+jiwer
+pydantic>=2
+pydantic-settings
+fastapi
+uvicorn[standard]
+python-multipart

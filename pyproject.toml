@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "docai"
+version = "0.1.0"
+description = "Intelligent document processing pipeline combining Computer Vision and NLP."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Elhassane" }]
+keywords = ["document-ai", "ocr", "nlp", "computer-vision", "bert", "yolo"]
+
+# Core runtime deps that are light enough to always install.
+dependencies = [
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "opencv-python-headless",
+    "pytesseract",
+    "Pillow",
+    "editdistance",
+    "jiwer",
+    "pydantic>=2",
+    "pydantic-settings",
+    "fastapi",
+    "uvicorn[standard]",
+    "python-multipart",
+]
+
+[project.optional-dependencies]
+# Heavy deep-learning stack (GPU recommended). Install with: pip install .[dl]
+dl = [
+    "torch",
+    "transformers",
+    "ultralytics",
+    "sentence-transformers",
+    "faiss-cpu",
+    "onnx",
+    "onnxruntime",
+    "accelerate",
+    "seqeval",
+]
+ui = ["streamlit"]
+dev = ["pytest", "ruff", "mypy"]
+
+[project.scripts]
+docai-api = "docai.api.main:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 90
+target-version = "py310"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

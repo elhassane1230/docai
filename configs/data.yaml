@@ -1,0 +1,17 @@
+# Ultralytics dataset config for fine-tuning the document-layout detector.
+# Point `path` at your annotated corpus (YOLO txt-label format) and run:
+#   python -m docai.vision.train_yolo --data configs/data.yaml --weights yolov5s.pt
+path: data/layout
+train: images/train
+val: images/val
+test: images/test
+
+# Class indices MUST match docai.schemas.ElementType ordering used at inference.
+names:
+  0: text
+  1: title
+  2: table
+  3: figure
+  4: logo
+  5: signature
+  6: stamp

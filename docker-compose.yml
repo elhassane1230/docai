@@ -1,0 +1,38 @@
+services:
+  api:
+    build:
+      context: .
+      args:
+        INSTALL_DL: "0"          # set to "1" to bake in YOLO/BERT stack
+    image: docai:latest
+    ports:
+      - "8000:8000"
+    environment:
+      DOCAI_ENABLE_PREPROCESS: "1"
+      DOCAI_ENABLE_VISION: "0"
+      DOCAI_ENABLE_CLS: "0"
+      DOCAI_ENABLE_NER: "0"
+      DOCAI_OCR__LANG: "eng+fra"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+
+  # Optional internal operations UI (Streamlit) — enable with:
+  #   docker compose --profile ui up
+  ui:
+    build:
+      context: .
+      args:
+        INSTALL_DL: "0"
+    command: >
+      sh -c "pip install streamlit &&
+             streamlit run ui/streamlit_app.py --server.port 8501 --server.address 0.0.0.0"
+    ports:
+      - "8501:8501"
+    environment:
+      DOCAI_API_URL: "http://api:8000"
+    depends_on:
+      - api
+    profiles: ["ui"]
+    volumes:
+      - ./ui:/app/ui
