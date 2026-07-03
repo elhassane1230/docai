@@ -15,7 +15,7 @@ and modern Transformer NLP.
 The repository is designed so the **CPU core runs anywhere** (OpenCV +
 Tesseract + FastAPI + all evaluation metrics), while the **deep-learning
 stages** (YOLO, BERT/DistilBERT, sentence-transformers) are optional and
-lazily loaded — you only pay for the models you enable.
+lazily loaded, you only pay for the models you enable.
 
 ---
 
@@ -53,8 +53,8 @@ Per-step CER attribution (lower is better), micro-averaged over 24 noisy docs:
 naïve "throw every filter at it" chain is *worse* than a tuned one: on this
 degradation profile, **CLAHE followed by adaptive thresholding compounds and
 amplifies noise** (CER blows up to ~0.84 when stacked), so CLAHE and aggressive
-border-cropping are **disabled by default**. The lesson — preprocessing must be
-tuned to the actual degradation, not assembled by reflex — is exactly what an
+border-cropping are **disabled by default**. The lesson, preprocessing must be
+tuned to the actual degradation, not assembled by reflex, is exactly what an
 ablation is for.
 
 ---
@@ -133,7 +133,7 @@ ui/                   Streamlit operations console
   validates/serialises for free and stages are individually testable.
 - **Honest evaluation.** Span-level (not token-level) NER F1; VOC-style mAP;
   micro-averaged CER/WER. The classification metric is measured on the *OCR
-  output of noisy scans*, not on clean text — i.e. it includes upstream error.
+  output of noisy scans*, not on clean text, i.e. it includes upstream error.
 
 See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) and
 [`docs/RESULTS.md`](docs/RESULTS.md) for details, and
