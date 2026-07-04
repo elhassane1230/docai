@@ -22,7 +22,7 @@ lazily loaded, you only pay for the models you enable.
 ## Highlights / results
 
 All numbers below were **actually computed** by the scripts in this repo on a
-CPU-only machine, over a 24-document synthetic corpus with realistic scanner
+a standard machine, over a 24-document synthetic corpus with realistic scanner
 degradation (uneven illumination, defocus blur, fade, Gaussian + salt-pepper
 noise, skew). Reproduce with `make data && make ablation && make demo`.
 
