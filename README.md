@@ -1,4 +1,4 @@
-# DocAI — Intelligent Document Processing (Computer Vision + NLP)
+# DocAI: Intelligent Document Processing (Computer Vision + NLP)
 
 An end-to-end **Document AI** system that turns unstructured, scanned documents
 into structured, queryable data by combining classical computer vision, OCR,
